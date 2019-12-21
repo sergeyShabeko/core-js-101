@@ -20,7 +20,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-  return width*height;
+  return width * height;
 }
 
 
@@ -36,7 +36,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-  return 2*Math.PI*radius;
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -52,7 +52,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1/2 + value2/2);
+  return (value1 / 2 + value2 / 2);
 }
 
 /**
@@ -87,7 +87,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  return -b/a;
+  return -b / a;
 }
 
 
@@ -110,7 +110,7 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  return Math.acos((x1*x2 + y1*y2)/Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2))*Math.sqrt(Math.pow(x2, 2) 
+  return Math.acos((x1 * x2 + y1 * y2) / Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2)
   + Math.pow(y2, 2)));
 }
 
@@ -127,7 +127,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  let result = value.toString();
+  const result = value.toString();
   return +result.substr((result.length - 1), 1);
 }
 
@@ -161,7 +161,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a, b, c) {
-  return Math.sqrt(a**2 + b**2 + c**2);
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 /**
@@ -205,7 +205,7 @@ function roundToPowerOfTen(num, pow) {
 function isPrime(n) {
   if (n < 2) {
     return false;
-  } else if (n === 2) {
+  } if (n === 2) {
     return true;
   }
   let i = 2;
@@ -214,9 +214,9 @@ function isPrime(n) {
     if (n % i === 0) {
       return false;
     }
-    i +=1;
+    i += 1;
   }
-  
+
   return true;
 }
 
@@ -236,11 +236,10 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if(Number.isNaN(+value)){
+  if (Number.isNaN(+value)) {
     return def;
-  } else {
-    return +value;
   }
+  return +value;
 }
 
 module.exports = {
