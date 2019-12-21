@@ -274,7 +274,10 @@ function getSecondItems(arr) {
  */
 function propagateItemsByPositionIndex(arr) {
   let result = [];
-  arr.map((x, index) => result = result.concat(new Array(index + 1).fill(x)));
+  arr.map(function getResult(x, index) {
+    result = result.concat(new Array(index + 1).fill(x));
+    return this.x;
+  });
   return result;
 }
 
@@ -311,7 +314,7 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  return arr.filter((x) => x > 0 & typeof (x) === 'number').length;
+  return arr.filter((x) => x > 0 && typeof (x) === 'number').length;
 }
 
 /**
@@ -439,11 +442,17 @@ function toStringList(arr) {
  *    ]
  */
 function sortCitiesArray(arr) {
-  const temp = arr.sort((a, b) => (a.country > b.country ? 1 : -1));
-  return temp.sort((a, b) => {
-    if (a.country === b.country) {
-      return (a.city > b.city) ? 1 : -1;
+  return arr.sort((a, b) => {
+    if (a.country > b.country) {
+      return 1;
     }
+    if (a.country < b.country) {
+      return -1;
+    }
+    if (a.city < b.city) {
+      return -1;
+    }
+    return 1;
   });
 }
 
@@ -486,8 +495,13 @@ function getIdentityMatrix(n) {
  */
 function getIntervalArray(start, end) {
   const length = (end - start) + 1;
+  let value = start;
   const arr = new Array(length).fill();
-  const result = arr.map(() => x = start++);
+  const result = arr.map(() => {
+    const x = value;
+    value += 1;
+    return x;
+  });
   return result;
 }
 
@@ -595,9 +609,9 @@ function getElementByIndexes(/* arr, indexes */) {
  *
  */
 function swapHeadAndTail(arr) {
-  let sizeSlice = Math.floor(arr.length/2);
-  let head = arr.splice(0, sizeSlice, );
-  let tail = arr.splice((arr.length) - sizeSlice, sizeSlice, );
+  const sizeSlice = Math.floor(arr.length / 2);
+  const head = arr.splice(0, sizeSlice);
+  const tail = arr.splice((arr.length) - sizeSlice, sizeSlice);
   return tail.concat(arr).concat(head);
 }
 

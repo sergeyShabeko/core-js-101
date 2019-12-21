@@ -54,8 +54,8 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-  let year = date.getYear() + 1900;
-  return new Date(year, 1, 29).getMonth() == 1;
+  const year = date.getYear() + 1900;
+  return new Date(year, 1, 29).getMonth() === 1;
 }
 
 
